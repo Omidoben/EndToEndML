@@ -6,6 +6,11 @@ import pandas as pd
 
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
+from src.components.data_transformation import DataTransformation
+from src.components.data_transformation import DataTransformationConfig
+
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
 
 @dataclass
 class DataIngestionConfig:
@@ -58,4 +63,28 @@ class DataIngestion:
 
 if __name__=="__main__":
     obj=DataIngestion()
-    obj.initiate_data_ingestion()
+    train_data, test_data=obj.initiate_data_ingestion()
+
+    data_transformation = DataTransformation()
+    train_arr, test_arr, _=data_transformation.initiate_data_transformation(train_data, test_data)
+
+    model_trainer = ModelTrainer()
+    print(model_trainer.initiate_model_trainer(train_arr, test_arr))
+
+
+
+
+# Explanation of above code
+
+# - This is a Python standard construct that ensures the code inside this block only runs when the script is executed directly, 
+#   not when it's imported as a module in another file
+
+# obj - Creates an instance of the DataIngestion class, which is responsible for reading the raw data, splitting it, 
+#       saving them to disk, and returning the file paths to the csv files
+
+# train_data, test_data - Calls the initiate_data_ingestion() method, which does the ingestion work, and stores the returned file paths to train_data and test_data.
+#                         train_data - is a file path to the training data CSV (e.g., "artifacts/train.csv")
+#                         test_data - is a file path to the test data CSV (e.g., "artifacts/test.csv")
+
+# data_transformation - creates an instance of the DataTransformation class
+# Last line applies our previously defined data preprocessing pipeline to the train and test data
