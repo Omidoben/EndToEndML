@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 20px;
+        }
+        .card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .error-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .error-icon {
+            font-size: 4rem;
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container error-container">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h3 class="mb-0">Error</h3>
+            </div>
+            <div class="card-body text-center">
+                <div class="error-icon mb-3">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    ⚠️
+                </div>
+                <h4 class="card-title mb-3">Something went wrong</h4>
+                <div class="alert alert-danger">
+                    {{ error }}
+                </div>
+                
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+                    <a href="/predict" class="btn btn-primary me-md-2">Try Again</a>
+                    <a href="/" class="btn btn-secondary">Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

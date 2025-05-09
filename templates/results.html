@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 20px;
+        }
+        .card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .result-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .result-score {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container result-container">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h3 class="mb-0">Prediction Results</h3>
+            </div>
+            <div class="card-body text-center">
+                <h4 class="card-title mb-4">Predicted Math Score</h4>
+                <div class="result-score mb-4">{{ prediction|round(2) }}</div>
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5>Score Interpretation</h5>
+                        {% if prediction >= 90 %}
+                            <p class="text-success">Excellent! This score indicates outstanding performance in mathematics.</p>
+                        {% elif prediction >= 80 %}
+                            <p class="text-success">Very good! This score indicates strong mathematical skills.</p>
+                        {% elif prediction >= 70 %}
+                            <p class="text-primary">Good! This score indicates above-average performance in mathematics.</p>
+                        {% elif prediction >= 60 %}
+                            <p class="text-warning">Average performance. There is room for improvement.</p>
+                        {% else %}
+                            <p class="text-danger">Below average. Additional support and practice may be needed to improve mathematical skills.</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <a href="/predict" class="btn btn-primary me-md-2">Make Another Prediction</a>
+                    <a href="/" class="btn btn-secondary">Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
